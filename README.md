@@ -21,7 +21,6 @@ An AI-powered web application that detects whether a fruit is **fresh** or **rot
 - [Technologies Used](#-technologies-used)
 - [Troubleshooting](#-troubleshooting)
 - [Contributing](#-contributing)
-- [License](#-license)
 
 ---
 
@@ -240,12 +239,6 @@ Contributions are welcome! Here's how you can help:
 - [ ] Add confidence score display
 - [ ] Implement batch image processing
 - [ ] Add dark/light theme toggle
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
