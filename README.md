@@ -70,8 +70,8 @@ This application uses a **Convolutional Neural Network (CNN)** trained to classi
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/fruit_freshness_app.git
-   cd fruit_freshness_app
+   git clone https://github.com/Niranjan070/fruit-freshness-detection.git
+   cd fruit-freshness-detection
    ```
 
 2. **Create a virtual environment** (recommended)
@@ -90,9 +90,15 @@ This application uses a **Convolutional Neural Network (CNN)** trained to classi
    pip install -r requirements.txt
    ```
 
-4. **Ensure the model file exists**
+4. **Train the model** ⚠️ **Important**
    
-   Make sure `fruit_freshness_model.h5` is in the project root directory.
+   The model file (`fruit_freshness_model.h5`) is **not included** in this repository due to its large size. You need to train it yourself:
+   
+   ```bash
+   python train.py
+   ```
+   
+   > **Note:** Before running, update the dataset paths in `train.py` to point to your local fruit dataset directory.
 
 ---
 
@@ -119,11 +125,13 @@ The app will open in your default browser at `http://localhost:8501`
 ## 📁 Project Structure
 
 ```
-fruit_freshness_app/
+fruit-freshness-detection/
 │
 ├── app.py                      # Main Streamlit application
-├── fruit_freshness_model.h5    # Pre-trained CNN model (~134 MB)
+├── train.py                    # Script to train the CNN model
+├── fruit_freshness_model.h5    # Trained model (generated after training)
 ├── requirements.txt            # Python dependencies
+├── .gitignore                  # Git ignore rules
 ├── README.md                   # Project documentation
 └── venv/                       # Virtual environment (not tracked in git)
 ```
@@ -140,6 +148,31 @@ fruit_freshness_app/
 | **Input Channels** | 3 (RGB) |
 | **Output** | Binary classification (Fresh / Rotten) |
 | **File Format** | HDF5 (.h5) |
+
+### Training the Model
+
+The `train.py` script handles model training with the following features:
+
+- **Data Augmentation**: Rotation, zoom, and horizontal flipping
+- **Architecture**: 3 Conv2D layers with MaxPooling + Dense layers
+- **Dropout**: 0.5 to prevent overfitting
+- **Optimizer**: Adam with binary crossentropy loss
+
+To train with your own dataset:
+
+1. Organize your dataset:
+   ```
+   dataset/
+   ├── train/
+   │   ├── fresh/
+   │   └── rotten/
+   └── validation/
+       ├── fresh/
+       └── rotten/
+   ```
+
+2. Update paths in `train.py`
+3. Run: `python train.py`
 
 ### Prediction Logic
 
@@ -177,7 +210,7 @@ else:
 #### 2. Model file not found
 **Cause:** `fruit_freshness_model.h5` is missing
 
-**Solution:** Ensure the model file is in the same directory as `app.py`
+**Solution:** Train the model first by running `python train.py`, or ensure the model file is in the same directory as `app.py`
 
 #### 3. TensorFlow installation issues
 **Solution:**
@@ -218,9 +251,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Your Name**
+**Niranjan**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@Niranjan070](https://github.com/Niranjan070)
 
 ---
 
